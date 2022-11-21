@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './Die.css';
 
 class Die extends Component {
+	static defaultProps = {
+		rolledDie: 1
+	};
 	dieDecider(dieNum) {
 		switch (dieNum) {
 			case 1:
@@ -22,8 +25,11 @@ class Die extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<i className={`fas fa-dice-${this.dieDecider(this.props.rolledDie)} fa-10x `} />
+			<div className="Die-Icon">
+				<i
+					className={`Die fas fa-dice-${this.dieDecider(this.props.rolledDie)} ${this.props.rolling &&
+						'shaking'}`}
+				/>
 			</div>
 		);
 	}
